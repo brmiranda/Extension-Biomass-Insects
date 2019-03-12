@@ -1,7 +1,6 @@
-//  Copyright 2006-2011 University of Wisconsin, Portland State University
 //  Authors:  Jane Foster, Robert M. Scheller
 
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 using Landis.Core;
 using System.Collections.Generic;
 using System.Text;
@@ -62,7 +61,7 @@ namespace Landis.Extension.Insects
             parameters.DurationParameter2 = sdD.Value;
 
             InputVar<double> maxDur = new InputVar<double>("MaxDuration");
-            if(ReadOptionalVar(maxDur));
+            if(ReadOptionalVar(maxDur))
                 parameters.MaxDuration = maxDur.Value;
 
             InputVar<int> mTBO = new InputVar<int>("MeanTimeBetweenOutbreaks");

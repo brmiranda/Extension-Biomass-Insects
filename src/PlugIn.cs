@@ -1,4 +1,3 @@
-//  Copyright 2006-2011 University of Wisconsin, Portland State University
 //  Authors:  Jane Foster, Robert M. Scheller
 
 using Landis.Core;
@@ -6,7 +5,7 @@ using Landis.SpatialModeling;
 using Landis.Library.BiomassCohorts;
 using Landis.Library.Metadata;
 using System.Collections.Generic;
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 using System.IO;
 using System;
 
@@ -21,7 +20,7 @@ namespace Landis.Extension.Insects
     public class PlugIn
         : ExtensionMain
     {
-        public static readonly ExtensionType Type = new ExtensionType("disturbance:insects");
+        public static readonly ExtensionType ExtType = new ExtensionType("disturbance:insects");
         public static readonly string ExtensionName = "Biomass Insects";
         public static MetadataTable<EventsLog> eventLog;
 
@@ -35,7 +34,7 @@ namespace Landis.Extension.Insects
         //---------------------------------------------------------------------
 
         public PlugIn()
-            : base(ExtensionName, Type)
+            : base(ExtensionName, ExtType)
         {
         }
 

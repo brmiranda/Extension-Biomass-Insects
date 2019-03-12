@@ -1,7 +1,6 @@
-//  Copyright 2006-2011 University of Wisconsin, Portland State University
 //  Authors:  Jane Foster, Robert M. Scheller
 
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 //using Troschuetz.Random;
 
 namespace Landis.Extension.Insects
@@ -103,7 +102,7 @@ namespace Landis.Extension.Insects
             if(dist == DistributionType.Gamma)
             {
                 PlugIn.ModelCore.GammaDistribution.Alpha = parameter1;// mean
-                PlugIn.ModelCore.GammaDistribution.Theta = parameter2;// std dev
+                PlugIn.ModelCore.GammaDistribution.Beta = parameter2;// std dev
                 randomNum = PlugIn.ModelCore.GammaDistribution.NextDouble();
                 randomNum = PlugIn.ModelCore.GammaDistribution.NextDouble();
             }
