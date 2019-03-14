@@ -92,14 +92,14 @@ namespace Landis.Extension.Insects
             ReadVar(ipv2);
             parameters.InitialPatchValue2 = ipv2.Value;
 
-            //--------- Read In Species Table ---------------------------------------
-             PlugIn.ModelCore.UI.WriteLine("   Begin parsing SPECIES table.");            
-            ReadName("SpeciesParameters");
-
             InputVar<string> annMort = new InputVar<string>("MortalityEstimate");
             ReadVar(annMort);
             parameters.AnnMort = annMort.Value;
-
+            
+            //--------- Read In Species Table ---------------------------------------
+            PlugIn.ModelCore.UI.WriteLine("   Begin parsing SPECIES table.");            
+            ReadName("SpeciesParameters");
+            
             InputVar<string> sppName = new InputVar<string>("Species");
             InputVar<int> susc = new InputVar<int>("Species Susceptibility");
             InputVar<double> grs = new InputVar<double>("Growth Reduction Slope");
@@ -259,7 +259,7 @@ namespace Landis.Extension.Insects
             if (parameters.SusceptibleTable.Count == 0)
                 throw NewParseException("No susceptibilities defined.");
 
-            return parameters;//.GetComplete();
+            return parameters;
 
         }
         //---------------------------------------------------------------------

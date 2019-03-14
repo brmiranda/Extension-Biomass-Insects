@@ -1,0 +1,6 @@
+LandisData  "Dynamic Input Data"
+
+>> Year Ecoregion Species ProbEst MaxANPP MaxB
+>> --- ---------  ------- ------  ------  -----
+
+0 eco3  acerrubr       1.0  	1175	26000	

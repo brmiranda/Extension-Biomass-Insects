@@ -1,0 +1,7 @@
+LandisData   "Initial Communities"
+
+
+>> old aspen-birch
+MapCode 3
+   acerrubr 10 30 50 70
+

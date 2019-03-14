@@ -57,6 +57,7 @@ namespace Landis.Extension.Insects
 
         int IDisturbance.ReduceOrKillMarkedCohort(ICohort cohort)
         {
+            PlugIn.ModelCore.UI.WriteLine("   Cohort mortality initiated:  spp={0}, age={1}, biomass={2}", cohort.Species.Name, cohort.Age, cohort.Biomass);
             int biomassMortality = 0;
             double percentMortality = 0.0;
             int sppIndex = cohort.Species.Index;
@@ -65,7 +66,10 @@ namespace Landis.Extension.Insects
             {
 
                 if (!insect.ActiveOutbreak)
+                {
+                    PlugIn.ModelCore.UI.WriteLine("   Insect not active outbreak");
                     continue;
+                }
 
                 int suscIndex = insect.SppTable[sppIndex].Susceptibility - 1;
 
@@ -75,7 +79,7 @@ namespace Landis.Extension.Insects
                 if (insect.HostDefoliationByYear[currentSite].ContainsKey(PlugIn.ModelCore.CurrentTime - yearBack))
                 {
                     annualDefoliation = insect.HostDefoliationByYear[currentSite][PlugIn.ModelCore.CurrentTime - yearBack][suscIndex];
-                    // PlugIn.ModelCore.UI.WriteLine("Host Defoliation By Year:  Time={0}, suscIndex={1}, spp={2}, annualDefoliation={3}.", (PlugIn.ModelCore.CurrentTime - yearBack), suscIndex + 1, cohort.Species.Name, annualDefoliation);
+                    PlugIn.ModelCore.UI.WriteLine("Host Defoliation By Year:  Time={0}, suscIndex={1}, spp={2}, annualDefoliation={3}.", (PlugIn.ModelCore.CurrentTime - yearBack), suscIndex + 1, cohort.Species.Name, annualDefoliation);
                 }
                 double cumulativeDefoliation = annualDefoliation;
                 double lastYearsCumulativeDefoliation = 0;
@@ -90,7 +94,7 @@ namespace Landis.Extension.Insects
 
                         if(annualDefoliation > 0.0)
                         {
-                            // PlugIn.ModelCore.UI.WriteLine("Host Defoliation By Year:  Time={0}, spp={2}, defoliation={3:0.00}.", (PlugIn.ModelCore.CurrentTime - yearBack), suscIndex+1, cohort.Species.Name, annualDefoliation);
+                            PlugIn.ModelCore.UI.WriteLine("Host Defoliation By Year:  Time={0}, spp={2}, defoliation={3:0.00}.", (PlugIn.ModelCore.CurrentTime - yearBack), suscIndex+1, cohort.Species.Name, annualDefoliation);
                         }
 
                         cumulativeDefoliation += annualDefoliation;
@@ -113,7 +117,6 @@ namespace Landis.Extension.Insects
                     {
                         //Most mortality studies restrospectively measure mortality for a number of years post disturbance. We need to subtract background mortality to get the yearly estimate. Subtract 7, assuming 1% mortality/year for 7 years, a typical time since disturbance in mortality papers. 
                         percentMortality = ((intercept) * (double)Math.Exp((slope * cumulativeDefoliation * 100)) - 7) / 100;
-                        //UI.WriteLine("cumulativeDefoliation={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", cumulativeDefoliation, cohort.Biomass, percentMortality);
                     }
 
                     // Second year or more of defoliation mortality discounts the first year's mortality amount.
@@ -143,7 +146,7 @@ namespace Landis.Extension.Insects
 
                         //percentMortality = ((intercept) * (double)Math.Exp((slope * cumulativeDefoliation * 100))) / 100;
                         percentMortality = (double)Math.Exp(slope * cumulativeDefoliation * 100 + intercept) / 100;
-                        // PlugIn.ModelCore.UI.WriteLine("cumulativeDefoliation={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", cumulativeDefoliation, cohort.Biomass, percentMortality);
+                        PlugIn.ModelCore.UI.WriteLine("cumulativeDefoliation={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", cumulativeDefoliation, cohort.Biomass, percentMortality);
                     }
                     // **** End new section from JRF ****
                 }
@@ -155,7 +158,7 @@ namespace Landis.Extension.Insects
                 if (percentMortality > 0.0)
                 {
                     biomassMortality += (int) ((double) cohort.Biomass * percentMortality);
-                    // PlugIn.ModelCore.UI.WriteLine("biomassMortality={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", biomassMortality, cohort.Biomass, percentMortality);
+                    PlugIn.ModelCore.UI.WriteLine("biomassMortality={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", biomassMortality, cohort.Biomass, percentMortality);
 
                 }
 

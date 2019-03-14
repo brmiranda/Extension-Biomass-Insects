@@ -1,0 +1,48 @@
+LandisData InsectDefoliator
+
+InsectName	GypsyMoth
+
+StartYear 1
+
+DurationDistribution Normal
+
+DurationParameter1	3 <<exp rate
+
+DurationParameter2	0.1
+
+MaxDuration	7
+
+MeanTimeBetweenOutbreaks	5
+
+StdDevTimeBetweenOutbreaks	0.1
+
+NeighborhoodSize	250	<< meters
+
+>> Lower this number to lower probabilities of patch generation, i.e. start fewer patches. 
+InitialPatchOutbreakSensitivity	1.0	<< must be > 0.0
+
+InitialPatchDistribution	Weibull	<<Weibull, Beta, or Gamma
+>> Patch size distribution should be based on patch radius distribution? patch area distribution? Units?
+InitialPatchValue1	0.5	<<depends on the distribution, must be > 0.0
+InitialPatchValue2	25	<<depends on the distribution, must be > 0.0
+
+MortalityEstimate	"Annual"
+
+SpeciesParameters
+>> Susceptibility class by species (from Liebhold et al... reference here)
+>> Species	Susceptibility	 Growth Reduction Parameters  Mortality Parameters
+>>		Class		 Slope	Intercept	      Slope	Intercept
+>>--------------------------------------------------------------------------------
+acerrubr       1	-0.8	1	0.009	7
+   
+Susceptibilities
+>> Host	Dist80	S1_80	S2_80	Dist60	S1_60	S2_60	Dist40	S1_40	S2_40	Dist20	S1_20	S2_20	Dist0	S1_0	S2_0
+1	Beta	0.84	0.20	Beta	0.84	0.33	Beta	1.14	1.18	Beta	0.50	2.00	Beta	0.5	6.0
+2	Beta	1.27	0.68	Beta	1.14	1.18	Beta	0.7	2.00	Beta	0.5	3.00	Beta	0.5	6.0
+3	Beta	1	1	Beta	0.8	1.68	Beta	0.7	2.00	Beta	0.5	6.00	Beta	0.2	6.0
+
+MapNames  insects-severity-{timestep}.gis
+LogFile   insects-log.csv
+
+>> Edited some growth and mortality slope parameters slightly as well as susceptibility distributions. Also modifying patch 
+>> distribution stuff in this file. Trying to get more realistic results.
