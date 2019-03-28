@@ -146,7 +146,7 @@ namespace Landis.Extension.Insects
 
                         //percentMortality = ((intercept) * (double)Math.Exp((slope * cumulativeDefoliation * 100))) / 100;
                         percentMortality = (double)Math.Exp(slope * cumulativeDefoliation * 100 + intercept) / 100;
-                        PlugIn.ModelCore.UI.WriteLine("cumulativeDefoliation={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", cumulativeDefoliation, cohort.Biomass, percentMortality);
+                        PlugIn.ModelCore.UI.WriteLine("   BIOMASS INSECTS: CumulativeDefoliation={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", cumulativeDefoliation, cohort.Biomass, percentMortality);
                     }
                     // **** End new section from JRF ****
                 }
@@ -155,10 +155,13 @@ namespace Landis.Extension.Insects
                     throw new System.ApplicationException("Error: Mortality parameter is not Annual or 7Year");     
                 }
 
+                // RMS TESTING 3/19
+                percentMortality = 0.5;
+
                 if (percentMortality > 0.0)
                 {
                     biomassMortality += (int) ((double) cohort.Biomass * percentMortality);
-                    PlugIn.ModelCore.UI.WriteLine("biomassMortality={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", biomassMortality, cohort.Biomass, percentMortality);
+                    PlugIn.ModelCore.UI.WriteLine("   BIOMASS INSECTS: biomassMortality={0}, cohort.Biomass={1}, percentMortality={2:0.00}.", biomassMortality, cohort.Biomass, percentMortality);
 
                 }
 
@@ -173,7 +176,7 @@ namespace Landis.Extension.Insects
 
             if(biomassMortality > cohort.Biomass || biomassMortality < 0)
             {
-                 PlugIn.ModelCore.UI.WriteLine("Cohort Total Mortality={0}. Cohort Biomass={1}. Site R/C={2}/{3}.", biomassMortality, cohort.Biomass, currentSite.Location.Row, currentSite.Location.Column);
+                PlugIn.ModelCore.UI.WriteLine("   BIOMASS INSECTS: Cohort Total Mortality={0}. Cohort Biomass={1}. Site R/C={2}/{3}.", biomassMortality, cohort.Biomass, currentSite.Location.Row, currentSite.Location.Column);
                 throw new System.ApplicationException("Error: Total Mortality is not between 0 and cohort biomass");
             }
 

@@ -14,7 +14,7 @@ MaxDuration	7
 
 MeanTimeBetweenOutbreaks	5
 
-StdDevTimeBetweenOutbreaks	0.1
+StdDevTimeBetweenOutbreaks	1
 
 NeighborhoodSize	250	<< meters
 
