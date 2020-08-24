@@ -1,0 +1,18 @@
+LandisData  "PnET-Succession"										
+
+PnET-Succession		Value											
+>>-----------------------------												
+Timestep  1	
+StartYear	1960															
+SeedingAlgorithm	UniversalDispersal						
+Latitude	45								
+
+MaxDevLyrAv 10000
+
+PNEToutputsites	  	PnET1cellOutput.txt
+									
+InitialCommunities      One_cell_one_species_initial-communities.txt											
+InitialCommunitiesMap   initial-communities.img	
+PnETGenericParameters	PnETGenericParameters.txt
+PnETSpeciesParameters	SpeciesParameters_insecttest.txt
+EcoregionParameters	EcoregionParameters.txt	

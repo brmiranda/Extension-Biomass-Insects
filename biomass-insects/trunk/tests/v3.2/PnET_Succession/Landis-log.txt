@@ -1,0 +1,21 @@
+2020-04-03 10:15:35,144 - LANDIS-II 6.2 (official release)
+2020-04-03 10:15:35,166 - 
+2020-04-03 10:15:35,491 - Loading scenario from file "scenario.txt" ...
+2020-04-03 10:15:35,634 - Initialized random number generator with seed = 4,156,413,488
+2020-04-03 10:15:35,635 - Loading species data from file "species_insecttest.txt" ...
+2020-04-03 10:15:35,750 - Loading ecoregions from file "One_cell_ecoregion.txt" ...
+2020-04-03 10:15:35,863 - Initializing landscape from ecoregions map "ecoregion.img" ...
+2020-04-03 10:15:35,999 - Cell length = 30 m, cell area = 0.09 ha
+2020-04-03 10:15:36,006 - Map dimensions: 17 rows by 17 columns = 289 cells
+2020-04-03 10:15:36,027 - Sites: 1 active (0.3 %), 288 inactive (99.7 %)
+2020-04-03 10:15:36,063 - Loading PnET-Succession extension ...
+2020-04-03 10:15:36,811 - Initializing PnET-Succession version 2.5.0.0
+2020-04-03 10:15:36,940 - Internal error occurred within the program:
+2020-04-03 10:15:36,941 -   No value provided for parameter SnowSublimFrac
+2020-04-03 10:15:36,941 - 
+2020-04-03 10:15:36,941 - Stack trace:
+2020-04-03 10:15:37,149 -    at Landis.Extension.Succession.BiomassPnET.PlugIn.GetParameter(String label, Single min, Single max) in C:\BRM\LANDIS_II\GitCode\Extension-PnET-Succession\src\PlugIn.cs:line 72
+   at Landis.Extension.Succession.BiomassPnET.EcoregionPnET.Initialize() in C:\BRM\LANDIS_II\GitCode\Extension-PnET-Succession\src\EcoregionPnET.cs:line 248
+   at Landis.Extension.Succession.BiomassPnET.PlugIn.Initialize() in C:\BRM\LANDIS_II\GitCode\Extension-PnET-Succession\src\PlugIn.cs:line 280
+   at Landis.Model.Run(String scenarioPath, IUserInterface ui)
+   at Landis.App.Main(String[] args)

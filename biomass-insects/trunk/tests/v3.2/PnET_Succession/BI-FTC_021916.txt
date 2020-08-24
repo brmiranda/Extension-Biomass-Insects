@@ -1,0 +1,63 @@
+LandisData InsectDefoliator															
+															
+InsectName	FTC														
+
+DurationDistribution	Weibull  << Estimated by Jane to match previously used durations
+DurationParameter1	2.370419
+DurationParameter2	1.692427
+MaxDuration  5														
+															
+MeanTimeBetweenOutbreaks	11														
+StdDevTimeBetweenOutbreaks	2														
+															
+NeighborhoodSize	150	<< meters													
+															
+>> Lower this number to lower probabilities of patch generation, i.e. start fewer patches															
+InitialPatchOutbreakSensitivity	0.00016	 << JANE'S DISERTATION = 0.00006, BUT SPREAD FUNCTION CHANGED; Calibrated to give %area in patches 6-20% (BiomassInsects_outbreak_area.R)
+															
+InitialPatchDistribution	Weibull	<<Weibull, Beta, or Gamma"													
+>> Patch size distribution should be based on patch area distribution; Units = ha															
+InitialPatchValue1	1.2	<<depends on the distribution, must be > 0.0; Calibrated to give range that matches Jane's simulations (BiomassInsects_outbreak_area.R, BioInsects_Outbreak_Area.xlsx)
+InitialPatchValue2	250	<<depends on the distribution, must be > 0.0													
+															
+SpeciesParameters															
+MortalityEstimate  Annual  << 'Annual' or '7Year'															
+>> Susceptibility class by species (from ??... reference here)															
+>> Species	Susceptibility	 Growth Reduction Parameters  Mortality Parameters													
+>>		Class		 Slope	Intercept	      Slope	Intercept								
+>>--------------------------------------------------------------------------------															
+acerrubr       3	-0.8	1	0.006	2.202	<< Campbell and Valentine 1972									
+acersacc       1	-0.8	1	0.006	2.202	<< Same as acerrubr											
+caryglab       2	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus										
+fraxamer       2	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus							
+juglnigr       3	-0.8	1	0.008	2.135	<< Semi-ring porous (Diffuse porous), same as populus						
+lirituli       3	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus				
+magnacum       3	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus					
+nysssylv       1	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus										
+pinuechi       3	-1	1	0.018	1.207   << Baker 1941											
+pinupung       3	-1	1	0.018	1.207   << Baker 1941											
+pinurigi       3	-1	1	0.018	1.207   << Baker 1941											
+pinustro       3	-1	1	0.018	1.207   << Baker 1941											
+pinuvirg       3	-1	1	0.018	1.207   << Baker 1941											
+>>popugran       1	-0.8	1	0.008	2.135	<< Man et al. 2008											
+>>poputrem       1	-0.8	1	0.008	2.135	<< Man et al. 2008											
+prunsero       2	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus						
+queralba       2	-0.16	1	0.008	1.704   << Feicht et al. 1993											
+quercocc       1	-0.16	1	0.008	1.704   << Feicht et al. 1993							
+querprin       1	-0.16	1	0.008	1.704   << Feicht et al. 1993							
+querrubr       1	-0.16	1	0.008	1.704   << Feicht et al. 1993							
+quervelu       1	-0.16	1	0.008	1.704   << Feicht et al. 1993							
+robipseu       3	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus											
+sassalbi       2	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus											
+tiliamer       2	-0.16	1	0.008	2.135	<< Diffuse porous, same as populus										
+tsugcana       3	-1	1	0.018	1.207   << Baker 1941											
+ulmuamer       2	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus											
+castdent       2	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus	      										
+   															
+Susceptibilities
+>> Host	Dist80	S1_80	S2_80	Dist60	S1_60	S2_60	Dist40	S1_40	S2_40	Dist20	S1_20	S2_20	Dist0	S1_0	S2_0
+1	Beta	1.06	0.81	Beta	1.06	0.81	Beta	1.06	0.81	Beta	1.17	2.64	Beta	0.29	4.12
+2	Beta	0.73	0.75	Beta	0.73	0.75	Beta	0.73	0.75	Beta	0.76	2.13	Beta	0.26	4.92
+3	Beta	0	10	Beta	0	10	Beta	0	10	Beta	0	10	Beta	0	10															
+MapNames  insects/severity-{timestep}.gis															
+LogFile   insects/log.csv						

@@ -1,0 +1,13 @@
+LandisData PnETGenericParameters
+
+
+PnETGenericParameters Value
+<<MaxDevLyrAv			500
+MaxCanopyLayers			2
+DNSC				0.05
+MaintResp			0.0005
+PsnAgeRed			5
+EstRad				1
+EstMoist			1
+Wythers				true
+PreventEstablishment		true

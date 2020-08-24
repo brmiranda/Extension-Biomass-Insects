@@ -1,7 +1,7 @@
 //  Copyright 2006-2011 University of Wisconsin, Portland State University
 //  Authors:  Jane Foster, Robert M. Scheller
 
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 //using Troschuetz.Random;
 
 namespace Landis.Extension.Insects
@@ -76,47 +76,57 @@ namespace Landis.Extension.Insects
             double randomNum = 0.0;
             if(dist == DistributionType.Normal)
             {
-                PlugIn.ModelCore.NormalDistribution.Mu = parameter1; //mean
-                PlugIn.ModelCore.NormalDistribution.Sigma = parameter2; // std dev
                 if (parameter2 == 0)
                     randomNum = parameter1;
                 else
                 {
+                    PlugIn.ModelCore.NormalDistribution.Mu = parameter1; //mean
+                    PlugIn.ModelCore.NormalDistribution.Sigma = parameter2; // std dev
                     randomNum = PlugIn.ModelCore.NormalDistribution.NextDouble();
                     randomNum = PlugIn.ModelCore.NormalDistribution.NextDouble();
                 }
             }
-            if (dist == DistributionType.Exponential)
+            else if (dist == DistributionType.Exponential)
             {
                 PlugIn.ModelCore.ExponentialDistribution.Lambda = parameter1;
                 randomNum = PlugIn.ModelCore.ExponentialDistribution.NextDouble();
                 randomNum = PlugIn.ModelCore.ExponentialDistribution.NextDouble();
             }
-            if(dist == DistributionType.Weibull)
+            else if(dist == DistributionType.Weibull)
             {
-                PlugIn.ModelCore.WeibullDistribution.Alpha = parameter1;// mean
-                PlugIn.ModelCore.WeibullDistribution.Lambda = parameter2;// std dev
-                randomNum = PlugIn.ModelCore.WeibullDistribution.NextDouble();
-                randomNum = PlugIn.ModelCore.WeibullDistribution.NextDouble();
+                if (parameter2 == 0)
+                    randomNum = parameter1;
+                else
+                {
+                    PlugIn.ModelCore.WeibullDistribution.Alpha = parameter1;// mean
+                    PlugIn.ModelCore.WeibullDistribution.Lambda = parameter2;// std dev
+                    randomNum = PlugIn.ModelCore.WeibullDistribution.NextDouble();
+                    randomNum = PlugIn.ModelCore.WeibullDistribution.NextDouble();
+                }
             }
-
-            if(dist == DistributionType.Gamma)
+            else if(dist == DistributionType.Gamma)
             {
-                PlugIn.ModelCore.GammaDistribution.Alpha = parameter1;// mean
-                PlugIn.ModelCore.GammaDistribution.Theta = parameter2;// std dev
-                randomNum = PlugIn.ModelCore.GammaDistribution.NextDouble();
-                randomNum = PlugIn.ModelCore.GammaDistribution.NextDouble();
+                if (parameter2 == 0)
+                    randomNum = parameter1;
+                else
+                {
+                    PlugIn.ModelCore.GammaDistribution.Alpha = parameter1;// mean
+                    PlugIn.ModelCore.GammaDistribution.Beta = parameter2;// std dev
+                    randomNum = PlugIn.ModelCore.GammaDistribution.NextDouble();
+                    randomNum = PlugIn.ModelCore.GammaDistribution.NextDouble();
+                }
             }
-            if(dist == DistributionType.Beta)
+            else if(dist == DistributionType.Beta)
             {
-                PlugIn.ModelCore.BetaDistribution.Alpha = parameter1;// mean
-                PlugIn.ModelCore.BetaDistribution.Beta = parameter2;// std dev
                 if (parameter1 == 0)
                     randomNum = 0;
                 else if (parameter2 == 0)
                     randomNum = 1;
                 else
                 {
+                    PlugIn.ModelCore.BetaDistribution.Alpha = parameter1;// mean
+                    PlugIn.ModelCore.BetaDistribution.Beta = parameter2;// std dev
+
                     randomNum = PlugIn.ModelCore.BetaDistribution.NextDouble();
                     randomNum = PlugIn.ModelCore.BetaDistribution.NextDouble();
                 }

@@ -1,0 +1,50 @@
+LandisData InsectDefoliator															
+															
+InsectName	GypsyMoth		
+
+StartYear  30												
+															
+DurationDistribution	Weibull << Estimated by Jane to match previously used durations
+DurationParameter1	10
+DurationParameter2	10
+MaxDuration  1													
+															
+MeanTimeBetweenOutbreaks	10														
+StdDevTimeBetweenOutbreaks	0														
+															
+NeighborhoodSize	100	<<meters													
+															
+															
+InitialPatchOutbreakSensitivity 0.00014  << JANE'S DISERTATION = 0.00008, BUT SPREAD FUNCTION CHANGED; Calibrated to give %area in patches 8-22% (BiomassInsects_outbreak_area.R)
+															
+InitialPatchDistribution	Weibull	<<Weibull, Beta, or Gamma												
+>> Patch size distribution should be based on patch patch area distribution; Units = ha															
+InitialPatchValue1	1.5	<<depends on the distribution, must be > 0.0; Calibrated to give range that matches Jane's simulations (BiomassInsects_outbreak_area.R, BioInsects_Outbreak_Area.xlsx)
+InitialPatchValue2	350	<<depends on the distribution, must be > 0.0													
+															
+SpeciesParameters															
+															
+MortalityEstimate  Annual  << 'Annual' or '7Year'															
+>> Susceptibility class by species (from Liebhold et al... reference here)															
+>> Species	Susceptibility	 Growth Reduction Parameters  		Mortality Parameters											
+>>	Class	 Slope	Intercept	      Slope	Intercept										
+>>--------------------------------------------------------------------------------														
+acerrubr        2	-0.8	1	0.006	2.202	<< Campbell and Valentine 1972							
+acersacc       	2	-0.8	1	0.006	2.202	<< Same as acerrubr														
+caryglab       	2	-0.16	1	0.008	1.704	<< Ring-porous, same as quercus								
+pinurigi       	2	-1	1	0.018	1.207   << Baker 1941									
+pinustro       	2	-1	1	0.018	1.207   << Baker 1941									
+pinuvirg       	2	-1	1	0.018	1.207   << Baker 1941
+queralba       	1	-0.16	1	0.008	1.704   << Feicht et al. 1993									
+quercocc       	1	-0.16	1	0.008	1.704   << Feicht et al. 1993										
+querrubr       	1	-0.16	1	0.008	1.704   << Feicht et al. 1993									
+ 															
+Susceptibilities															
+>> Host	Dist80	S1_80	S2_80	Dist60	S1_60	S2_60	Dist40	S1_40	S2_40	Dist20	S1_20	S2_20	Dist0	S1_0	S2_0
+1	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0
+2	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0
+3	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0	Normal 0.5	0															
+															
+MapNames  insects/severity-{timestep}.gis															
+LogFile   insects/log.csv															
+

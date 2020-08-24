@@ -6,7 +6,7 @@ using Landis.SpatialModeling;
 using Landis.Library.BiomassCohorts;
 using Landis.Library.Metadata;
 using System.Collections.Generic;
-using Edu.Wisc.Forest.Flel.Util;
+using Landis.Utilities;
 using System.IO;
 using System;
 
@@ -136,7 +136,7 @@ namespace Landis.Extension.Insects
         {
 
             running = true;
-            PlugIn.ModelCore.UI.WriteLine("   Processing landscape for Biomass Insect events ...");
+             PlugIn.ModelCore.UI.WriteLine("   Processing landscape for Biomass Insect events ...");
 
             SiteVars.SiteDefoliation.ActiveSiteValues = 0; 
 

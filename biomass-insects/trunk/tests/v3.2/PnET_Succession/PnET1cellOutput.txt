@@ -1,0 +1,6 @@
+LandisData	"PNEToutputsites"		
+		
+	
+PNEToutputsites	Row	Column			
+>>----------------------------------------------------------------------------------------		
+Site1	9	9

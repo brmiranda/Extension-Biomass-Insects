@@ -1,0 +1,27 @@
+LandisData  Scenario
+	  
+Duration  50
+Species   species_insecttest.txt
+
+Ecoregions      One_cell_ecoregion.txt
+EcoregionsMap   ecoregion.img
+
+CellLength  30 << meters, so cell area = 900 m2
+
+
+
+>> Succession Extension     Initialization File
+>> --------------------     -------------------
+   "PnET-Succession"    pnetsuccession_insecttest.txt
+ 
+
+
+>> Disturbance Extensions   Initialization File
+>> ----------------------   -------------------
+   "Biomass Insects"		BiomassInsectsInput-GM.txt
+
+>> Output Extensions        Initialization File
+>> -----------------        -------------------
+
+
+ 
